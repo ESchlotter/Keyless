@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Door Unlocker
+//  Project Keyless
 //
 //  Created by Eduard Schlotter on 04/12/2016.
 //  Copyright © 2016 Eduard Schlotter. All rights reserved.
