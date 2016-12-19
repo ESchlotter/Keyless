@@ -14,6 +14,10 @@
 		1B2008091DF4ACA9007F2E62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2008071DF4ACA9007F2E62 /* LaunchScreen.storyboard */; };
 		1B2008141DF4ACA9007F2E62 /* Door_UnlockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2008131DF4ACA9007F2E62 /* Door_UnlockerTests.swift */; };
 		1B20081F1DF4ACA9007F2E62 /* Door_UnlockerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20081E1DF4ACA9007F2E62 /* Door_UnlockerUITests.swift */; };
+		1B2008351DF501D3007F2E62 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2008341DF501D3007F2E62 /* ViewController2.swift */; };
+		1B2008371DF50BE9007F2E62 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2008361DF50BE9007F2E62 /* ViewController3.swift */; };
+		1B20083A1DF50D1A007F2E62 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2008391DF50D1A007F2E62 /* MessageUI.framework */; };
+		1B20083C1DF50DCD007F2E62 /* OneTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20083B1DF50DCD007F2E62 /* OneTimeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		1B20081A1DF4ACA9007F2E62 /* Door UnlockerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Door UnlockerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B20081E1DF4ACA9007F2E62 /* Door_UnlockerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door_UnlockerUITests.swift; sourceTree = "<group>"; };
 		1B2008201DF4ACA9007F2E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B2008341DF501D3007F2E62 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		1B2008361DF50BE9007F2E62 /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		1B2008391DF50D1A007F2E62 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		1B20083B1DF50DCD007F2E62 /* OneTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneTimeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B20083A1DF50D1A007F2E62 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +90,7 @@
 				1B2008121DF4ACA9007F2E62 /* Door UnlockerTests */,
 				1B20081D1DF4ACA9007F2E62 /* Door UnlockerUITests */,
 				1B2007FC1DF4ACA9007F2E62 /* Products */,
+				1B2008381DF50D19007F2E62 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +113,9 @@
 				1B2008051DF4ACA9007F2E62 /* Assets.xcassets */,
 				1B2008071DF4ACA9007F2E62 /* LaunchScreen.storyboard */,
 				1B20080A1DF4ACA9007F2E62 /* Info.plist */,
+				1B2008341DF501D3007F2E62 /* ViewController2.swift */,
+				1B2008361DF50BE9007F2E62 /* ViewController3.swift */,
+				1B20083B1DF50DCD007F2E62 /* OneTimeViewController.swift */,
 			);
 			path = "Door Unlocker";
 			sourceTree = "<group>";
@@ -123,6 +136,14 @@
 				1B2008201DF4ACA9007F2E62 /* Info.plist */,
 			);
 			path = "Door UnlockerUITests";
+			sourceTree = "<group>";
+		};
+		1B2008381DF50D19007F2E62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B2008391DF50D1A007F2E62 /* MessageUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +209,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Eduard Schlotter";
 				TargetAttributes = {
 					1B2007FA1DF4ACA9007F2E62 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5P8T4HC496;
 						ProvisioningStyle = Automatic;
 					};
 					1B20080E1DF4ACA9007F2E62 = {
@@ -259,8 +281,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B20083C1DF50DCD007F2E62 /* OneTimeViewController.swift in Sources */,
 				1B2008011DF4ACA9007F2E62 /* ViewController.swift in Sources */,
 				1B2007FF1DF4ACA9007F2E62 /* AppDelegate.swift in Sources */,
+				1B2008371DF50BE9007F2E62 /* ViewController3.swift in Sources */,
+				1B2008351DF501D3007F2E62 /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +358,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -383,6 +409,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -412,6 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5P8T4HC496;
 				INFOPLIST_FILE = "Door Unlocker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ES.Door-Unlocker";
@@ -424,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5P8T4HC496;
 				INFOPLIST_FILE = "Door Unlocker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ES.Door-Unlocker";
@@ -505,6 +534,7 @@
 				1B2008251DF4ACA9007F2E62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B2008261DF4ACA9007F2E62 /* Build configuration list for PBXNativeTarget "Door UnlockerTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +543,7 @@
 				1B2008281DF4ACA9007F2E62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B2008291DF4ACA9007F2E62 /* Build configuration list for PBXNativeTarget "Door UnlockerUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +552,7 @@
 				1B20082B1DF4ACA9007F2E62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
