@@ -1,14 +1,14 @@
 //
-//  ViewController3.swift
+//  Settings.swift
 //  Door Unlocker
 //
-//  Created by Eduard Schlotter on 05/12/2016.
+//  Created by Eduard Schlotter on 19/12/2016.
 //  Copyright © 2016 Eduard Schlotter. All rights reserved.
 //
 
 import UIKit
 
-class ViewController3: UIViewController {
+class Settings: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
