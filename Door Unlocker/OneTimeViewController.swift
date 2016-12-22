@@ -54,6 +54,7 @@ class OneTimeViewController: UIViewController, MFMessageComposeViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         FourDigits.delegate = self
+        
 
         // Do any additional setup after loading the view.
     }
