@@ -13,6 +13,8 @@ class OneTimeViewController: UIViewController, MFMessageComposeViewControllerDel
 
     @IBOutlet var Send: UIButton!
     
+    @IBOutlet var Tracking: UITextField!
+    
     @IBOutlet var Phone: UITextField!
     
     @IBOutlet var FourDigits: UITextField!
@@ -21,6 +23,10 @@ class OneTimeViewController: UIViewController, MFMessageComposeViewControllerDel
         let messageVC = MFMessageComposeViewController()
         let number = Phone.text
         let myVar: String=String(fourUniqueDigits)
+        /*var body = "Use the following code for the keypad "+myVar+" .";
+        if(Tracking==NULL){
+            body = "Use this code for the keypad "+myVar+" followed by the last 4 digits of the tracking number.";
+        }*/
         messageVC.body = "Use this code for the keypad "+myVar+" followed by the last 4 digits of the tracking number.";
         messageVC.recipients = [number!]
         messageVC.messageComposeDelegate = self;

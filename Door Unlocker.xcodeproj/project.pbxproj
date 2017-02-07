@@ -33,6 +33,7 @@
 		1B89ECE01E0B3F0C00391023 /* Profiles@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B89ECDD1E0B3F0C00391023 /* Profiles@2x.png */; };
 		1B89ECE11E0B3F0C00391023 /* Profiles@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B89ECDE1E0B3F0C00391023 /* Profiles@3x.png */; };
 		1BB24E051E08403D00BE7659 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB24E041E08403D00BE7659 /* Settings.swift */; };
+		1BCF1AD61E44FF2A00325A4D /* BluetoothSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCF1AD51E44FF2A00325A4D /* BluetoothSerial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		1B89ECDD1E0B3F0C00391023 /* Profiles@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profiles@2x.png"; sourceTree = "<group>"; };
 		1B89ECDE1E0B3F0C00391023 /* Profiles@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profiles@3x.png"; sourceTree = "<group>"; };
 		1BB24E041E08403D00BE7659 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		1BCF1AD51E44FF2A00325A4D /* BluetoothSerial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothSerial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,12 +141,13 @@
 			children = (
 				1B2007FE1DF4ACA9007F2E62 /* AppDelegate.swift */,
 				1B2008001DF4ACA9007F2E62 /* ViewController.swift */,
+				1B2008341DF501D3007F2E62 /* ViewController2.swift */,
+				1BCF1AD51E44FF2A00325A4D /* BluetoothSerial.swift */,
 				1B2008021DF4ACA9007F2E62 /* Main.storyboard */,
 				1B89ECB51E0B097C00391023 /* Images */,
 				1B2008051DF4ACA9007F2E62 /* Assets.xcassets */,
 				1B2008071DF4ACA9007F2E62 /* LaunchScreen.storyboard */,
 				1B20080A1DF4ACA9007F2E62 /* Info.plist */,
-				1B2008341DF501D3007F2E62 /* ViewController2.swift */,
 				1B20083B1DF50DCD007F2E62 /* OneTimeViewController.swift */,
 				1BB24E041E08403D00BE7659 /* Settings.swift */,
 				1B2F4EC41E084D5D009EEDA7 /* ProfilesController.swift */,
@@ -353,6 +356,7 @@
 				1B2008011DF4ACA9007F2E62 /* ViewController.swift in Sources */,
 				1B2F4EC51E084D5D009EEDA7 /* ProfilesController.swift in Sources */,
 				1B2007FF1DF4ACA9007F2E62 /* AppDelegate.swift in Sources */,
+				1BCF1AD61E44FF2A00325A4D /* BluetoothSerial.swift in Sources */,
 				1B2008351DF501D3007F2E62 /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
