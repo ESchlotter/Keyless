@@ -21,12 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="ThZ-jY-QLj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="ThZ-jY-QLj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ThZ-jY-QLj" secondAttribute="trailing" id="3Yl-Qo-YjF"/>
+                            <constraint firstItem="ThZ-jY-QLj" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="3hJ-Kf-b7w"/>
+                            <constraint firstItem="ThZ-jY-QLj" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="Jwb-dh-1Bb"/>
+                            <constraint firstItem="ThZ-jY-QLj" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="c0g-U5-8fD"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
