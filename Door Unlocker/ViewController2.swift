@@ -55,5 +55,21 @@ class ViewController2: UIViewController, UITableViewDelegate, BluetoothSerialDel
         }
     }
     
+    func serialDidDiscoverPeripheral(_ peripheral: CBPeripheral, RSSI: NSNumber?) {
+        print(peripherals)
+        // check whether it is a duplicate
+        for exisiting in peripherals {
+            if exisiting.peripheral.identifier == peripheral.identifier { return }
+        }
+        
+        // add to the array, next sort & reload
+        let theRSSI = RSSI?.floatValue ?? 0.0
+        peripherals.append(peripheral: peripheral, RSSI: theRSSI)
+        peripherals.sort { $0.RSSI < $1.RSSI }
+        print(peripherals)
+        if(peripheral.name=="MLT-BT05"){
+            serial.connectToPeripheral(peripheral)
+        }
+    }
 
 }

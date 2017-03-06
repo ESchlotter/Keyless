@@ -14,7 +14,32 @@ protocol BluetoothSerialDelegate {
     /// Called when a peripheral disconnected
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?)
     
-    }
+    // ** Optionals **
+    
+    /// Called when a message is received
+    func serialDidReceiveString(_ message: String)
+    
+    /// Called when a message is received
+    func serialDidReceiveBytes(_ bytes: [UInt8])
+    
+    /// Called when a message is received
+    func serialDidReceiveData(_ data: Data)
+    
+    /// Called when the RSSI of the connected peripheral is read
+    func serialDidReadRSSI(_ rssi: NSNumber)
+    
+    /// Called when a new peripheral is discovered while scanning. Also gives the RSSI (signal strength)
+    func serialDidDiscoverPeripheral(_ peripheral: CBPeripheral, RSSI: NSNumber?)
+    
+    /// Called when a peripheral is connected (but not yet ready for cummunication)
+    func serialDidConnect(_ peripheral: CBPeripheral)
+    
+    /// Called when a pending connection failed
+    func serialDidFailToConnect(_ peripheral: CBPeripheral, error: NSError?)
+    
+    /// Called when a peripheral is ready for communication
+    func serialIsReady(_ peripheral: CBPeripheral)
+}
 
 // Make some of the delegate functions optional
 extension BluetoothSerialDelegate {
@@ -45,9 +70,17 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     /// The connected peripheral (nil if none is connected)
     var connectedPeripheral: CBPeripheral?
     
- 
+    /// The characteristic 0xFFE1 we need to write to, of the connectedPeripheral
+    weak var writeCharacteristic: CBCharacteristic?
+    
     /// Whether this serial is ready to send and receive data
-
+    var isReady: Bool {
+        get {
+            return centralManager.state == .poweredOn &&
+                connectedPeripheral != nil &&
+                writeCharacteristic != nil
+        }
+    }
     
     /// Whether to write to the HM10 with or without response.
     /// Legit HM10 modules (from JNHuaMao) require 'Write without Response',
@@ -64,7 +97,6 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
     
-    /// Start scanning for peripherals
     func startScan() {
         guard centralManager.state == .poweredOn else { return }
         
@@ -72,13 +104,11 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         let uuid = CBUUID(string: "FFE0")
         centralManager.scanForPeripherals(withServices: [uuid], options: nil)
         
-        // retrieve peripherals that are already connected
-        // see this stackoverflow question http://stackoverflow.com/questions/13286487
         let peripherals = centralManager.retrieveConnectedPeripherals(withServices: [uuid])
         let uu = UUID.init(uuidString: "CA939400-8256-43D7-B6D8-EDED2E24CF94")
+        print(peripherals)
         for peripheral in peripherals {
             delegate.serialDidDiscoverPeripheral(peripheral, RSSI: nil)
-            print(peripheral)
             if(peripheral.identifier==uu){
                 connectToPeripheral(peripheral)
             }
@@ -107,7 +137,35 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         }
     }
     
-
+    /// The didReadRSSI delegate function will be called after calling this function
+    func readRSSI() {
+        guard isReady else { return }
+        connectedPeripheral!.readRSSI()
+    }
+    
+    /// Send a string to the device
+    func sendMessageToDevice(_ message: String) {
+        guard isReady else { return }
+        
+        if let data = message.data(using: String.Encoding.utf8) {
+            connectedPeripheral!.writeValue(data, for: writeCharacteristic!, type: writeType)
+        }
+    }
+    
+    /// Send an array of bytes to the device
+    func sendBytesToDevice(_ bytes: [UInt8]) {
+        guard isReady else { return }
+        
+        let data = Data(bytes: UnsafePointer<UInt8>(bytes), count: bytes.count)
+        connectedPeripheral!.writeValue(data, for: writeCharacteristic!, type: writeType)
+    }
+    
+    /// Send data to the device
+    func sendDataToDevice(_ data: Data) {
+        guard isReady else { return }
+        
+        connectedPeripheral!.writeValue(data, for: writeCharacteristic!, type: writeType)
+    }
     
     
     //MARK: CBCentralManagerDelegate functions
@@ -157,4 +215,58 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         delegate.serialDidChangeState()
     }
     
+    
+    //MARK: CBPeripheralDelegate functions
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        // discover the 0xFFE1 characteristic for all services (though there should only be one)
+        for service in peripheral.services! {
+            peripheral.discoverCharacteristics([CBUUID(string: "FFE1")], for: service)
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        // check whether the characteristic we're looking for (0xFFE1) is present - just to be sure
+        for characteristic in service.characteristics! {
+            if characteristic.uuid == CBUUID(string: "FFE1") {
+                // subscribe to this value (so we'll get notified when there is serial data for us..)
+                peripheral.setNotifyValue(true, for: characteristic)
+                
+                // keep a reference to this characteristic so we can write to it
+                writeCharacteristic = characteristic
+                
+                // notify the delegate we're ready for communication
+                delegate.serialIsReady(peripheral)
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        // notify the delegate in different ways
+        // if you don't use one of these, just comment it (for optimum efficiency :])
+        let data = characteristic.value
+        guard data != nil else { return }
+        
+        // first the data
+        delegate.serialDidReceiveData(data!)
+        
+        // then the string
+        if let str = String(data: data!, encoding: String.Encoding.utf8) {
+            delegate.serialDidReceiveString(str)
+        } else {
+            //print("Received an invalid string!") uncomment for debugging
+        }
+        
+        // now the bytes array
+        var bytes = [UInt8](repeating: 0, count: data!.count / MemoryLayout<UInt8>.size)
+        (data! as NSData).getBytes(&bytes, length: data!.count)
+        delegate.serialDidReceiveBytes(bytes)
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+        delegate.serialDidReadRSSI(RSSI)
+    }
 }
+
+
+

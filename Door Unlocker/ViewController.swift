@@ -15,8 +15,16 @@ class ViewController: UIViewController,BluetoothSerialDelegate {
     
     @IBOutlet weak var Label: UINavigationItem!
 
-
+    @IBOutlet var Switch: UISwitch!
     
+    @IBAction func SwitchTurn(_ sender: Any) {
+        if(Switch.isOn){
+            serial.sendMessageToDevice("11")
+        }
+        else{
+            serial.sendMessageToDevice("00")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +39,10 @@ class ViewController: UIViewController,BluetoothSerialDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
+        print("WHE")
         
     }
     func serialDidChangeState() {
