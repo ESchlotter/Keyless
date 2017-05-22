@@ -23,22 +23,24 @@ class OneTimeViewController: UIViewController, MFMessageComposeViewControllerDel
     var myVar : String? = nil
     
     @IBAction func Action(_ sender: UIButton) {
-        let messageVC = MFMessageComposeViewController()
-        let number = Phone.text
-        var bodyl: String
-        if(Tracking.text==""){
-            myVar = String(eightUniqueDigits)
-            bodyl = "Use the following code for the keypad: "+myVar!+".";
+        if((Tracking.text?.isEmpty)! || Tracking.text?.characters.count == 4){
+            let messageVC = MFMessageComposeViewController()
+            let number = Phone.text
+            var bodyl: String
+            if(Tracking.text==""){
+                myVar = String(eightUniqueDigits)
+                bodyl = "Use the following code for the keypad: "+myVar!+" followed by the '#' key.";
+            }
+            else{
+                myVar = String(fourUniqueDigits)
+                bodyl = "Use this code for the keypad: "+myVar!+" followed by the last 4 digits of the tracking number and the '#' key.";
+            }
+            messageVC.body = bodyl;
+            messageVC.recipients = [number!]
+            messageVC.messageComposeDelegate = self;
+            
+            self.present(messageVC, animated: false, completion: nil)
         }
-        else{
-            myVar = String(fourUniqueDigits)
-            bodyl = "Use this code for the keypad: "+myVar!+" followed by the last 4 digits of the tracking number.";
-        }
-        messageVC.body = bodyl;
-        messageVC.recipients = [number!]
-        messageVC.messageComposeDelegate = self;
-        
-        self.present(messageVC, animated: false, completion: nil)
         
         
     }

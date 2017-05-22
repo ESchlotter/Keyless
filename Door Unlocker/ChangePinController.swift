@@ -17,10 +17,12 @@ class ChangePinController: UIViewController, UITextFieldDelegate {
 
     
     @IBAction func Send(_ sender: UIButton) {
-        let pin = newPin.text
-        serial.sendMessageToDevice("\(pin!)")
-        print(pin!)
-        newPin.text = ""
+        if(newPin.text?.characters.count == 5){
+            let pin = newPin.text
+            serial.sendMessageToDevice("\(pin!)")
+            print(pin!)
+            newPin.text = ""
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +43,7 @@ class ChangePinController: UIViewController, UITextFieldDelegate {
             return false
         }
         let newLength = currentCharacterCount + string.characters.count - range.length
-        return newLength <= 4
+        return newLength <= 5
     }
     
 

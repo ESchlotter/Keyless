@@ -3,7 +3,7 @@ import CoreBluetooth
 
 /// Global serial handler, don't forget to initialize it with init(delgate:)
 var serial: BluetoothSerial!
-
+var logs = [String]()
 // Delegate functions
 protocol BluetoothSerialDelegate {
     // ** Required **
@@ -246,7 +246,6 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         // if you don't use one of these, just comment it (for optimum efficiency :])
         let data = characteristic.value
         guard data != nil else { return }
-        
         // first the data
         delegate.serialDidReceiveData(data!)
         
@@ -266,6 +265,11 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         delegate.serialDidReadRSSI(RSSI)
     }
+    
+    func getLogs() -> [String] {
+        return logs
+    }
+    
 }
 
 
