@@ -83,8 +83,6 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     }
     
     /// Whether to write to the HM10 with or without response.
-    /// Legit HM10 modules (from JNHuaMao) require 'Write without Response',
-    /// while fake modules (e.g. from Bolutek) require 'Write with Response'.
     var writeType: CBCharacteristicWriteType = .withoutResponse
     
     
@@ -269,7 +267,6 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     func getLogs() -> [String] {
         return logs
     }
-    
 }
 
 

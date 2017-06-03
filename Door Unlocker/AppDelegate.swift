@@ -37,6 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BluetoothSerialDelegate {
                 if(serial.connectedPeripheral != nil){
                     serial.sendMessageToDevice("11")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "off"), object: nil)
+                    let message = "Homeowner Unlocked"
+                    let formatter = DateFormatter()
+                    // initially set the format based on your datepicker date
+                    formatter.dateFormat = "HH:mm - "
+                    var myString = formatter.string(from: Date())
+                    myString += message
+                    print(myString)
+                    logs.insert(myString, at: 0)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                     return
                 }
             }

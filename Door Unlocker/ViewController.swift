@@ -19,14 +19,14 @@ class ViewController: UIViewController,BluetoothSerialDelegate, UITableViewDeleg
     @IBOutlet weak var Label: UINavigationItem!
 
     @IBOutlet var Switch: UISwitch!
-    
+    //Switch
     @IBAction func SwitchTurn(_ sender: Any) {
         if(Switch.isOn){
             serial.sendMessageToDevice("00")
             if(LockStatus.text != "       Not Connected"){LockStatus.text = "       Locked"}
         }
         else{
-            serial.sendMessageToDevice("11")
+            serial.sendMessageToDevice("11") //Send message
             if(LockStatus.text != "       Not Connected"){LockStatus.text = "       Unlocked"}
         }
     }
@@ -43,11 +43,11 @@ class ViewController: UIViewController,BluetoothSerialDelegate, UITableViewDeleg
         return(cell)
     }
     
-    func refresh(){
+    func refresh(){ //refresh table
         tableView.reloadData()
     }
     
-    func changeOn(){
+    func changeOn(){ //lock and unlock
         print("on")
         LockStatus.text = "       Locked"
         self.Switch.setOn(true, animated: true)
@@ -60,7 +60,7 @@ class ViewController: UIViewController,BluetoothSerialDelegate, UITableViewDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //start notifications
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "load"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeOn), name: NSNotification.Name(rawValue: "on"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeOff), name: NSNotification.Name(rawValue: "off"), object: nil)
@@ -85,7 +85,7 @@ class ViewController: UIViewController,BluetoothSerialDelegate, UITableViewDeleg
     
     
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
-        
+        //should not disconnect here
         
     }
     

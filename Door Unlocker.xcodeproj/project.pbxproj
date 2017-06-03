@@ -14,7 +14,6 @@
 		1B2008091DF4ACA9007F2E62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2008071DF4ACA9007F2E62 /* LaunchScreen.storyboard */; };
 		1B2008141DF4ACA9007F2E62 /* Door_UnlockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2008131DF4ACA9007F2E62 /* Door_UnlockerTests.swift */; };
 		1B20081F1DF4ACA9007F2E62 /* Door_UnlockerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20081E1DF4ACA9007F2E62 /* Door_UnlockerUITests.swift */; };
-		1B2008351DF501D3007F2E62 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2008341DF501D3007F2E62 /* ViewController2.swift */; };
 		1B20083A1DF50D1A007F2E62 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2008391DF50D1A007F2E62 /* MessageUI.framework */; };
 		1B20083C1DF50DCD007F2E62 /* OneTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20083B1DF50DCD007F2E62 /* OneTimeViewController.swift */; };
 		1B2F4EC51E084D5D009EEDA7 /* ProfilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F4EC41E084D5D009EEDA7 /* ProfilesController.swift */; };
@@ -55,7 +54,6 @@
 		1B20081A1DF4ACA9007F2E62 /* Door UnlockerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Door UnlockerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B20081E1DF4ACA9007F2E62 /* Door_UnlockerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door_UnlockerUITests.swift; sourceTree = "<group>"; };
 		1B2008201DF4ACA9007F2E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1B2008341DF501D3007F2E62 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		1B2008391DF50D1A007F2E62 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1B20083B1DF50DCD007F2E62 /* OneTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneTimeViewController.swift; sourceTree = "<group>"; };
 		1B2F4EC41E084D5D009EEDA7 /* ProfilesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilesController.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				1B2007FE1DF4ACA9007F2E62 /* AppDelegate.swift */,
 				1BCF1AD51E44FF2A00325A4D /* BluetoothSerial.swift */,
 				1B2008001DF4ACA9007F2E62 /* ViewController.swift */,
-				1B2008341DF501D3007F2E62 /* ViewController2.swift */,
 				1B20083B1DF50DCD007F2E62 /* OneTimeViewController.swift */,
 				1BB24E041E08403D00BE7659 /* Settings.swift */,
 				1B08B63A1E6D07DF00285F11 /* ChangePinController.swift */,
@@ -309,7 +306,6 @@
 				1B2007FF1DF4ACA9007F2E62 /* AppDelegate.swift in Sources */,
 				1B08B63B1E6D07DF00285F11 /* ChangePinController.swift in Sources */,
 				1BCF1AD61E44FF2A00325A4D /* BluetoothSerial.swift in Sources */,
-				1B2008351DF501D3007F2E62 /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

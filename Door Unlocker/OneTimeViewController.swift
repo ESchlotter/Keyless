@@ -27,6 +27,7 @@ class OneTimeViewController: UIViewController, MFMessageComposeViewControllerDel
             let messageVC = MFMessageComposeViewController()
             let number = Phone.text
             var bodyl: String
+            //Generate text
             if(Tracking.text==""){
                 myVar = String(eightUniqueDigits)
                 bodyl = "Use the following code for the keypad: "+myVar!+" followed by the '#' key.";
@@ -35,10 +36,10 @@ class OneTimeViewController: UIViewController, MFMessageComposeViewControllerDel
                 myVar = String(fourUniqueDigits)
                 bodyl = "Use this code for the keypad: "+myVar!+" followed by the last 4 digits of the tracking number and the '#' key.";
             }
+            //send text
             messageVC.body = bodyl;
             messageVC.recipients = [number!]
             messageVC.messageComposeDelegate = self;
-            
             self.present(messageVC, animated: false, completion: nil)
         }
         
@@ -46,6 +47,7 @@ class OneTimeViewController: UIViewController, MFMessageComposeViewControllerDel
     }
    
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        //get result from message api
         switch result.rawValue {
         case 0:
             //controller.present(ViewController2(), animated: true, completion: nil)
@@ -104,7 +106,7 @@ class OneTimeViewController: UIViewController, MFMessageComposeViewControllerDel
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+        //textfield
         let currentCharacterCount = textField.text?.characters.count ?? 0
         if (range.length + range.location > currentCharacterCount){
             return false
