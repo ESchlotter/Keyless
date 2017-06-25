@@ -1,8 +1,9 @@
 Project Keyless
-Current Version 0.5
+Current Version 1
 
-Language: Swift 3
-Created in Xcode
-SCC 230
 Author: Eduard Schlotter
 Group: James Thomas–Woodhouse
+
+Swift 3 + Arduino
+App + Code for Bluetooth-controlled smart lock.
+
